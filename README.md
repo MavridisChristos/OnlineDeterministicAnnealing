@@ -1,1 +1,1 @@
-# online-deterministic-annealing
+# Online Deterministic Annealing
