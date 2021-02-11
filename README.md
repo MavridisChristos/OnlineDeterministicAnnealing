@@ -30,6 +30,8 @@ For a complete guide see oda_demo.py.
 We assume data are a list of n m-vectors, and labels a list of n labels
 To train ODA with a dataset, we recommend a version of:
 
+    from oda_class import ODA 
+    
     clf = ODA(train_data=train_data,train_labels=train_labels,
                      Kmax=Kmax,Tmax=Tmax,Tmin=Tmin,
                      Bregman_phi=Bregman_phi)
