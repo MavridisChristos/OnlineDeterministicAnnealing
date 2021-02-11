@@ -28,7 +28,7 @@ Will be available through
 
 For a complete guide see oda_demo.py.
 We assume data are a list of n m-vectors, and labels a list of n labels
-To train ODA with a dataset, we recommend a version of:
+The simplest way to train ODA on a dataset is:
 
     from oda_class import ODA 
     
@@ -37,14 +37,6 @@ To train ODA with a dataset, we recommend a version of:
                      Bregman_phi=Bregman_phi)
 
     clf.fit(train_data, train_labels, test_data, test_labels, keepscore=True)
-    
-    print(f'*** ODA Trade-off: Smallest K for >97% ***')
-    idx = [i for i in range(len(clf.myTestError)) if clf.myTestError[i]<0.03]
-    errsrt = np.argsort([clf.myK[i] for i in idx])
-    j = idx[errsrt[0]]
-    print(f'Samples: {clf.myLoops[j]}, K: {clf.myK[j]}, T: {clf.myT[j]:.4f}')
-    print(f'Train Accuracy: {1-clf.myTrainError[j]:.3f}') 
-    print(f'Test Accuracy: {1-clf.myTestError[j]:.3f}')    
 
 You can access the intermediate model parameters in:
 
@@ -54,4 +46,4 @@ For unsupervised learning replace:
 
     train_labels = [0 for i in range(len(train_labels))] 
 
-`ODA.score` will return the average distortion. 
+`ODA.score` will return the average distortion instead of the misclassification error. 
