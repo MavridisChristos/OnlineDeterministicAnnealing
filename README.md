@@ -8,7 +8,7 @@ If you use this work in an academic context, please cite the following publicati
 
 Christos N. Mavridis, John S. Baras, 
 "**Online Deterministic Annealing for Classification and Clustering**,"
-ArXiv. 2021, [PDF](link_to_pdf)
+ArXiv. 2021, [PDF](https://arxiv.org/pdf/2102.05836.pdf)
 
     @misc{mavridis2021online,
           title={Online Deterministic Annealing for Classification and Clustering}, 
