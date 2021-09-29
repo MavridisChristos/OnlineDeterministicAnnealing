@@ -1,14 +1,15 @@
 # Online Deterministic Annealing (ODA)
  
 This repository contains the oda_class.py module and demo files to run ODA for classification and clustering.
-Will be registered in pypi soon.
+
+This is a deprecated version and will be updated soon.
 
 ## Citing
-If you use this work in an academic context, please cite the following publication:
+If you use this work in an academic context, please cite the following:
 
 Christos N. Mavridis, John S. Baras, 
-"**Online Deterministic Annealing for Classification and Clustering**,"
-ArXiv. 2021, [PDF](https://arxiv.org/pdf/2102.05836.pdf)
+"**Online Deterministic Annealing for Classification and Clustering**",
+arXiv, 2021 [(PDF)](https://arxiv.org/pdf/2102.05836.pdf)
 
     @misc{mavridis2021online,
           title={Online Deterministic Annealing for Classification and Clustering}, 
@@ -21,15 +22,14 @@ ArXiv. 2021, [PDF](https://arxiv.org/pdf/2102.05836.pdf)
 	  
 ## Installation
 
-Download and import oda_class.py.
-Will be available through 
-
-    pip install online-deterministic-annealing
+No installation needed. Just download and import oda_class.py.
 	
 ## Usage
 
 For a complete guide see oda_demo.py.
-We assume data are a list of n m-vectors, and labels a list of n labels
+
+Data are assumed to be in a list of n m-vectors (np.array format), and labels a list of n labels
+
 The simplest way to train ODA on a dataset is:
 
     from oda_class import ODA 
