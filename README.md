@@ -21,7 +21,6 @@ Fo questions please email: ```mavridis (at) umd.edu```.
 
 ## Description
  
-<<<<<<< HEAD
 Inherent in virtually every
 iterative machine learning algorithm is the problem 
 of hyper-parameter tuning, which includes three major design parameters: 
@@ -118,12 +117,12 @@ list of the parameters:
 
 Data
 
-- ```data_file = './data/data'```: .pkl file with the appropriate data format.
-- ```load_file = 'demo-1'```: if not empty string, load existing model.
-- ```results_file = 'demo-1'```: name of the .pkl file to store clf.
+- ```data_file='./data/data'```: .pkl file with the appropriate data format.
+- ```load_file='demo-1'```: if not empty string, load existing model.
+- ```results_file='demo-1'```: name of the .pkl file to store clf.
 
 Resolutions
-- ```res = [1] ```: specify data resolution (lowest=0) for each tree layer (here one layer). 
+- ```res=[1]```: specify data resolution (lowest=0) for each tree layer (here one layer). 
 
 
 Temperature
@@ -210,24 +209,14 @@ The training data should look like this:
 Demo file for Tree-Structured ODA using hierarchically increasing resolutions:
 
 	tests/demo/demo-01.py 
-=======
-This repository contains the oda_class.py module and demo files to run ODA for classification and clustering.
-
-This is a deprecated version and will be updated soon.
->>>>>>> 5bddecd44cec11846cdd1b35c89649230b553991
 
 ## Citing
 If you use this work in an academic context, please cite the following:
 
-<<<<<<< HEAD
 [1] Christos N. Mavridis and John S. Baras, 
 "**[Online Deterministic Annealing for Classification and Clustering](https://arxiv.org/pdf/2102.05836.pdf)**",
-arXiv, 2021
-=======
-Christos N. Mavridis, John S. Baras, 
-"**Online Deterministic Annealing for Classification and Clustering**",
-arXiv, 2021 [(PDF)](https://arxiv.org/pdf/2102.05836.pdf)
->>>>>>> 5bddecd44cec11846cdd1b35c89649230b553991
+arXiv, 2021.
+
 
     @misc{mavridis2021online,
           title={Online Deterministic Annealing for Classification and Clustering}, 
@@ -240,28 +229,14 @@ arXiv, 2021 [(PDF)](https://arxiv.org/pdf/2102.05836.pdf)
 	  
 Other references:
 
-<<<<<<< HEAD
 [2] Christos N. Mavridis and John S. Baras, 
 "**[Maximum-Entropy Input Estimation for Gaussian Processes in Reinforcement Learning](https://mavridischristos.github.io/publications.html)**",
-CDC, 2021
+CDC, 2021.
 
 [3] Christos N. Mavridis and John S. Baras, 
 "**[Progressive Graph Partitioning Based on Information Diffusion](https://mavridischristos.github.io/publications.html)**",
-CDC, 2021
-
-=======
-No installation needed. Just download and import oda_class.py.
+CDC, 2021.
 	
-## Usage
-
-For a complete guide see oda_demo.py.
-
-Data are assumed to be in a list of n m-vectors (np.array format), and labels a list of n labels
-
-The simplest way to train ODA on a dataset is:
->>>>>>> 5bddecd44cec11846cdd1b35c89649230b553991
-
-
 
 
 
