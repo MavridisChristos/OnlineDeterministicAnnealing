@@ -15,7 +15,7 @@
 [Christos N. Mavridis](https://mavridischristos.github.io/), 
 Ph.D. Candidate, 
 Department of Electrical and Computer Engineering,
-University of Maryland
+University of Maryland.
 
 Fo questions please email: ```mavridis (at) umd.edu```.
 
@@ -103,13 +103,12 @@ For unsupervised learning replace:
 
 ## Demo
 
-All parameters are treated as lists of *m* parameters, one for each resolution. 
+All parameters are treated as lists of *m* parameters, one for each resolution. \
+Here *m=1*. See below for multiple resolutions. 
 
 Demo file in one resolution:
 
 	tests/demo/demo-1.py 
-
-Here *m=1*. See below for multiple resolutions. 
 
 The file  ```OnlineDeterministicAnnealing/train_oda.py``` is used to train the ODA algorithm with the following
 list of the parameters:
