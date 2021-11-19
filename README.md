@@ -10,13 +10,11 @@
 
 ## Contact 
 
-
-
-[Christos N. Mavridis](https://mavridischristos.github.io/), Ph.D., <\br> 
-Department of Electrical and Computer Engineering,
-University of Maryland.
-
-For questions please email: ```mavridis (at) umd.edu```.
+Christos N. Mavridis, Ph.D., \
+Department of Electrical and Computer Engineering, \
+University of Maryland \
+https://mavridischristos.github.io/ \
+```mavridis (at) umd.edu``` 
 
 ## Description
  
