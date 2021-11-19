@@ -13,7 +13,7 @@
 
 
 [Christos N. Mavridis](https://mavridischristos.github.io/), 
-Ph.D. Candidate, 
+Ph.D., 
 Department of Electrical and Computer Engineering,
 University of Maryland.
 
