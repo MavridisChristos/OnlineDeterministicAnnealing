@@ -211,16 +211,17 @@ If you use this work in an academic context, please cite the following:
 
 [1] Christos N. Mavridis and John S. Baras, 
 "**[Online Deterministic Annealing for Classification and Clustering](https://arxiv.org/pdf/2102.05836.pdf)**",
-arXiv, 2021.
+IEEE TCNS, 2022.
 
-
-    @misc{mavridis2021online,
+    @article{mavridis2022online,
           title={Online Deterministic Annealing for Classification and Clustering}, 
-          author={Christos Mavridis and John Baras},
-          year={2021},
-          eprint={2102.05836},
-          archivePrefix={arXiv},
-          primaryClass={cs.LG}
+          author={Mavridis, Christos N. and Baras, John S.},
+          journal={IEEE Transactions on Neural Networks and Learning Systems},
+	  year={2022},
+          volume={},  
+	  number={},  
+	  pages={1-10},  
+	  doi={10.1109/TNNLS.2021.3138676}
           }
 	  
 Other references:
