@@ -217,11 +217,11 @@ IEEE TCNS, 2022.
           title={Online Deterministic Annealing for Classification and Clustering}, 
           author={Mavridis, Christos N. and Baras, John S.},
           journal={IEEE Transactions on Neural Networks and Learning Systems},
-	  year={2022},
+          year={2022},
           volume={},  
-	  number={},  
-	  pages={1-10},  
-	  doi={10.1109/TNNLS.2021.3138676}
+          number={},  
+          pages={1-10},  
+          doi={10.1109/TNNLS.2021.3138676}
           }
 	  
 Other references:
