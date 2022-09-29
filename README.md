@@ -191,7 +191,9 @@ The training data should look like this:
 ## Tutorials
 
 > [Clustering](https://colab.research.google.com/github/MavridisChristos/OnlineDeterministicAnnealing/blob/main/tutorials/tutorial-clustering.ipynb)
+
 > [Classification](https://colab.research.google.com/github/MavridisChristos/OnlineDeterministicAnnealing/blob/main/tutorials/tutorial-classification.ipynb)
+
 > [Regression](https://colab.research.google.com/github/MavridisChristos/OnlineDeterministicAnnealing/blob/main/tutorials/tutorial-regression.ipynb)
 
 ## Citing
