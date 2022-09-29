@@ -72,44 +72,12 @@ The above **sequence of optimization problems** is solved for decreasing values 
 
 > Recursive **gradient-free stochastic approximation** algorithm.
 
-## Abstract
-
-Inherent in virtually every
-iterative machine learning algorithm is the problem 
-of hyper-parameter tuning, which includes three major design parameters: 
-(a) the complexity of the model, e.g., the number of neurons in a neural network, 
-(b) the initial conditions, which heavily affect the 
-behavior of the algorithm, and
-(c) the dissimilarity measure used to quantify its performance.
-
-Online Deterministic Annealing (ODA) is an online prototype-based learning algorithm 
-for classification, clustering, and regression, 
-that progressively increases the number of prototypes as needed.
-That is, **the complexity of the model adapts to the online data observations**.
-The prototypes can be viewed as neurons living in the data space itself, 
-making ODA a progressively growing competitive-learning neural network architecture 
-with inherent interpretation properties regarding the weights of the neurons.
-
-The learning rule of ODA 
-is formulated as an online **gradient-free stochastic approximation** algorithm
-that solves a sequence of appropriately defined optimization problems,
-simulating an **annealing process**.
 The annealing nature of the algorithm contributes to
 avoiding poor local minima, 
 offers robustness with respect to the initial conditions,
 and provides a means 
 to progressively increase the complexity of the learning model
 through an intuitive bifurcation phenomenon.
-
-ODA is interpretable, requires minimal 
-hyper-parameter tuning, and 
-allows online control over the performance-complexity trade-off.
-Finally, **Bregman divergences** (which include the widely used Kullback-Leibler divergence)
-appear naturally as a family of dissimilarity measures 
-that enhance both 
-the performance and the computational complexity
-of the learning algorithm.
-
 	
 ## Usage
 
