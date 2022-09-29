@@ -12,7 +12,7 @@
 
 ## Contact 
 
-Christos N. Mavridis, Ph.D., \
+Christos N. Mavridis, Ph.D. \
 Department of Electrical and Computer Engineering, \
 University of Maryland \
 https://mavridischristos.github.io/ \
@@ -109,8 +109,9 @@ For regression (piece-wise constant function approximation) replace:
 
 ### Cost Function
 
-> Bregman Divergence: Values in {'phi_Eucl', 'phi_KL'} (Squared Euclidean distance, KL divergence)
+> Bregman Divergence: 
     
+    # Values in {'phi_Eucl', 'phi_KL'} (Squared Euclidean distance, KL divergence)
     Bregman_phi = ['phi_Eucl'] 
 
 ### Termination Criteria
@@ -157,24 +158,19 @@ The history of all the intermediate models trained is stored in:
 
 ## Tree Structure and Multiple Resolutions
 
-Demo file for Tree-Structured ODA using one resolution:
-
-	tests/demo/demo-11.py 
-
 For multiple resolutions every parameter becomes a list of *m* parameters.
 Example for *m=2*:
 
-	Tmax = [100.0, 1.0]
+	Tmax = [0.9, 0.09]
 	Tmin = [0.01, 0.0001]
 
 The training data should look like this:
 
 	train_data = [[np.array, np.array, ...], [np.array, np.array, ...], [np.array, np.array, ...], ...]
 
+## Tutorials
 
-Demo file for Tree-Structured ODA using hierarchically increasing resolutions:
 
-	tests/demo/demo-01.py 
 
 ## Citing
 If you use this work in an academic context, please cite the following:
@@ -197,10 +193,14 @@ IEEE TCNS, 2022.
 Other references:
 
 [2] Christos N. Mavridis and John S. Baras, 
+"**[Annealing Optimization for Progressive Learning with Stochastic Approximation](https://mavridischristos.github.io/publications.html)**",
+arXiv:2209.02826.
+
+[3] Christos N. Mavridis and John S. Baras, 
 "**[Maximum-Entropy Input Estimation for Gaussian Processes in Reinforcement Learning](https://mavridischristos.github.io/publications.html)**",
 CDC, 2021.
 
-[3] Christos N. Mavridis and John S. Baras, 
+[4] Christos N. Mavridis and John S. Baras, 
 "**[Progressive Graph Partitioning Based on Information Diffusion](https://mavridischristos.github.io/publications.html)**",
 CDC, 2021.
 	
