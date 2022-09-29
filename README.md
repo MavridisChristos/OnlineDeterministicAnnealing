@@ -68,8 +68,6 @@ Regarding the data format, they need to be a list of *(n)* lists of *(m=1)* *d*-
 
 	train_data = [[np.array], [np.array], [np.array], ...]
 
-## Training 
-
 The simplest way to train ODA on a dataset is:
 
     clf = ODA(train_data=train_data,train_labels=train_labels)
