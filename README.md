@@ -1,10 +1,12 @@
 # Online Deterministic Annealing (ODA)
 
->A progressively-growing competitive-learning 'neural network' architecture
->with inherent interpretability, robustness, and regularization properties. 
->ODA is based on the principles of vector quantization and annealing optimization, 
->and is trained with a gradient-free stochastic approximation algorithm.
->Applications include online unsupervised and supervised learning [1],
+> A general-purpose learning model designed to meet the needs of applications in which computational resources are limited, and robustness and interpretability are prioritized.
+
+> Constitutes an **online** prototype-based learning algorithm based on annealing optimization that is formulated as an recursive **gradient-free** stochastic approximation algorithm.
+
+> Can be viewed as an interpretable and progressively growing competitive-learning neural network model.
+
+>Applications include online unsupervised and supervised learning [1], regression,
 >reinforcement learning [2], 
 >adaptive graph partitioning [3], and swarm leader detection.
 
@@ -27,7 +29,7 @@ behavior of the algorithm, and
 (c) the dissimilarity measure used to quantify its performance.
 
 Online Deterministic Annealing (ODA) is an online prototype-based learning algorithm 
-for classification and clustering, 
+for classification, clustering, and regression, 
 that progressively increases the number of prototypes as needed.
 That is, **the complexity of the model adapts to the online data observations**.
 The prototypes can be viewed as neurons living in the data space itself, 
@@ -58,132 +60,100 @@ of the learning algorithm.
 	
 ## Usage
 
-The ODA architecture is coded in the ODA class inside ```OnlineDeterministicAnnealing/oda_jit.py```:
+The ODA architecture is coded in the ODA class inside ```OnlineDeterministicAnnealing/oda.py```:
 	
-	from oda_jit import ODA
+	from oda import ODA
 
 Regarding the data format, they need to be a list of *(n)* lists of *(m=1)* *d*-vectors (np.arrays):
 
 	train_data = [[np.array], [np.array], [np.array], ...]
 
-The labels need to be a list of *(n)* labels, preferably integer numbers (for numba.jit)
+## Classification
+
+For classification, the labels need to be a list of *(n)* labels, preferably integer numbers (for numba.jit)
 
 	train_labels = [ int, int , int, ...]
 
 The simplest way to train ODA on a dataset is:
 
-	
 	clf = ODA(train_data=train_data,train_labels=train_labels)
 	clf.fit(test_data=test_data,test_labels=test_labels)
 
-You can also specify the parameters 
+Notice that a dataset is not required, and one can train ODA using observations one at a time as follows:
 
-- ```Kmax```: the maximum number of codevectors you allow; 
-- ```Tmax``` and ```Tmin```: the maximum and minimum temperatures of the annealing optimization. These are scaled with respect to the domain size and the Bregman divergence used. Typical values are between 100 and 0.0001;
-- ```Bregman_phi```: the Bregman divergence used. Right now the squared Euclidean distance 'phi_Eucl' and the KL divergence 'phi_KL' are supported.
+    tl = len(clf.timeline)
+    # Stop in the next converged configuration
+    while len(clf.timeline)==tl and not clf.trained:
+        train_datum, train_label = system.observe()
+        clf.train(train_datum,train_label,test_data=test_data,test_labels=test_labels)
+            
+## Clustering
 
-The code becomes:	
-
-	clf = ODA(train_data=train_data,train_labels=train_labels,
-   	          Kmax=Kmax,Tmax=Tmax,Tmin=Tmin,
-	          Bregman_phi=Bregman_phi)
-
-    clf.fit(train_data, train_labels, test_data, test_labels, keepscore=True)
-
-
-## Unsupervised Learning
-
-For unsupervised learning replace:
+For clustering replace:
 
     train_labels = [0 for i in range(len(train_labels))] 
 
+## Regression
 
-## Demo
+For regression (piece-wise constant function approximation) replace:
 
-All parameters are treated as lists of *m* parameters, one for each resolution. \
-Here *m=1*. See below for multiple resolutions. 
+    train_labels = [ np.array, np.array , np.array, ...]
+    clf = ODA(train_data=train_data,train_labels=train_labels,regression=True)
 
-Demo file in one resolution:
+## Prediction
 
-	tests/demo/demo-1.py 
+    prediction = clf.predict(test_datum)
+    error = clf.score(test_data, test_labels)
 
-The file  ```OnlineDeterministicAnnealing/train_oda.py``` is used to train the ODA algorithm with the following
-list of the parameters:
+## Useful Parameters
 
+### Cost Function
 
-Data
+> Bregman Divergence: Values in {'phi_Eucl', 'phi_KL'} (Squared Euclidean distance, KL divergence)
+    
+    Bregman_phi = ['phi_Eucl'] 
 
-- ```data_file='./data/data'```: .pkl file with the appropriate data format.
-- ```load_file='demo-1'```: if not empty string, load existing model.
-- ```results_file='demo-1'```: name of the .pkl file to store clf.
+### Termination Criteria
 
-Resolutions
-- ```res=[1]```: specify data resolution (lowest=0) for each tree layer (here one layer). 
+> Minimum Termperature 
 
+    Tmin = [1e-4]
 
-Temperature
-- ```Tmax=[10]``` and ```Tmin=[0.001]```: maximum and minimum temperatures of the annealing optimization. Scaled wrt the domain size and the Bregman divergence used. 
-- ```gamma_schedule=[[0.1,0.1]]```: gamma values until gamma=gamma_steady --
-- ```gamma_steady=[0.8]```: -- T' = gamma * T
+> Limit in node's children. After that stop growing
 
+    Kmax = [50]
 
-Regularization
-- ```perturb_param=[0,1]```: Perturbation level for codevectors. Scaled wrt domain size and T.
-- ```effective_neighborhood=[0.1]```: Threshold under which codevectors are merged. Scaled wrt domain size and T.
-- ```py_cut=[0.001]```: Probability under which a codevector is pruned. Scaled wrt T.
+> Desired training error
 
+    error_threshold = [0.0]
+    # Stop when reached 'error_threshold_count' times
+    error_threshold_count = [2]
+    # Make sure keepscore > 2
+    keepscore = 3
 
-Termination
-- ```Kmax=[500]```: maximum number of codevectors allowed for each cell. 
-- ```timeline_limit=500-1```: Stop after timeline_limit T-epochs.
-- ```error_threshold=[0.001]```: Stop after reaching error_threshold --
-- ```error_threshold_count=3```: -- for error_threshold_count times.
+> ODA vs Soft-Clustering vs LVQ
 
+    # Values in {0,1,2,3}
+    # 0:ODA update
+    # 1:ODA until Kmax. Then switch to 2:soft clustering with no perturbation/merging 
+    # 2:soft clustering with no perturbation/merging 
+    # 3: LVQ update (hard-clustering) with no perturbation/merging
+    lvq=[0]
 
-Convergence
-- ```em_convergence=[0.01]```: T-epoch is finished when d(y',y)<em_convergence --
-- ```convergence_counter_threshold=[5]```: -- for convergence_counter_threshold times.
-- ```stop_separation=[100000-1]```: After stop-separation T-epochs stop treating distributions as independent
-- ```convergence_loops=[0]```: if>0 forces convergence_loops observations until T-epoch is finished.
-- ```bb_init=[0.9]```: initial bb value for stochastic approximation stepsize: 1/(bb+1) --
-- ```bb_step=[0.9]```: -- bb+=bb_step.
+> Verbose
 
+    # Values in {0,1,2,3}    
+    # 0: don't compute or show score
+    # 1: compute and show score only on tree node splits 
+    # 2: compute score after every SA convergence and use it as a stopping criterion
+    # 3: compute and show score after every SA convergence and use it as a stopping criterion
+    keepscore = 3
 
-Bregman divergence
-- ```Bregman_phi=['phi_Eucl']```: the Bregman divergence used. Right now the squared Euclidean distance 'phi_Eucl' and the KL divergence 'phi_KL' are supported. 
+## Model Progression
 
-Verbose
-- ```keepscore=True```: Compute error after each T-epoch
-- ```plot_curves=True```: Save figure with training & testing error curve.
-- ```show_domain=False```: Create folder with figures depicting the data space. Not supported yet.
-
-
-The code becomes:
-
-	clf = train_oda.run(data_file=data_file,results_file=results_file,load_file=load_file,
-                        res=res,plot_curves=plot_curves,show_domain=show_domain,
-                        keepscore=keepscore,
-                        timeline_limit=timeline_limit,
-                        Kmax=Kmax,Tmax=Tmax,Tmin=Tmin,
-                        error_threshold=error_threshold,
-                        error_threshold_count=error_threshold_count,
-                        gamma_schedule=gamma_schedule,gamma_steady=gamma_steady,
-                        Bregman_phi=Bregman_phi,
-                        em_convergence=em_convergence,
-                        py_cut = py_cut,
-                        convergence_counter_threshold=convergence_counter_threshold,
-                        perturb_param=perturb_param,
-                        effective_neighborhood=effective_neighborhood,
-                        convergence_loops=convergence_loops,stop_separation=stop_separation,
-                        bb_init=bb_init,bb_step=bb_step
-                        )
-
-## Results History
-
-The model parameters after training include:
+The history of all the intermediate models trained is stored in:
 
     clf.myY, clf.myYlabels, clf.myK, clf.myTreeK, clf.myT, clf.myLoops, clf.myTime, clf.myTrainError, clf.myTestError
-
 
 ## Tree Structure and Multiple Resolutions
 
