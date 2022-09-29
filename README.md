@@ -68,16 +68,12 @@ Regarding the data format, they need to be a list of *(n)* lists of *(m=1)* *d*-
 
 	train_data = [[np.array], [np.array], [np.array], ...]
 
-## Classification
-
-For classification, the labels need to be a list of *(n)* labels, preferably integer numbers (for numba.jit)
-
-	train_labels = [ int, int , int, ...]
+## Training 
 
 The simplest way to train ODA on a dataset is:
 
-	clf = ODA(train_data=train_data,train_labels=train_labels)
-	clf.fit(test_data=test_data,test_labels=test_labels)
+    clf = ODA(train_data=train_data,train_labels=train_labels)
+    clf.fit(test_data=test_data,test_labels=test_labels)
 
 Notice that a dataset is not required, and one can train ODA using observations one at a time as follows:
 
@@ -86,6 +82,12 @@ Notice that a dataset is not required, and one can train ODA using observations 
     while len(clf.timeline)==tl and not clf.trained:
         train_datum, train_label = system.observe()
         clf.train(train_datum,train_label,test_data=test_data,test_labels=test_labels)
+	
+## Classification
+
+For classification, the labels need to be a list of *(n)* labels, preferably integer numbers (for numba.jit)
+
+	train_labels = [ int, int , int, ...]
             
 ## Clustering
 
