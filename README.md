@@ -18,8 +18,62 @@ University of Maryland \
 https://mavridischristos.github.io/ \
 ```mavridis (at) umd.edu``` 
 
-## Description
- 
+## Description of the Optimization Algorithm
+
+The **observed data** are represented by a random variable 
+$$X: \Omega \rightarrow S\subseteq \mathbb{R}^d$$
+defined in a probability space $(\Omega, \mathcal{F}, \mathbb{P})$.
+
+Given a **similarity measure** (which can be any Bregman divergence, e.g., squared Euclidean distance, Kullback-Leibler divergence, etc.) 
+$$d:S\rightarrow \mathrm{ri}(S)$$ 
+the goal is to **find a set $\mu$ of $M$ codevectors** 
+in the input space **such that** the following average distortion measure is minimized: 
+
+$$ \min_\mu  J(\mu) := E[\min_i d(X,\mu_i)] $$
+    
+For supervised learning, e.g., classification and regression, each codevector $\mu_i$ is associated with a label $c_i$ as well.
+This process is equivalent to finding the most suitable set of $M$
+local constant models, and results in a 
+
+> **Piecewise-constant approximation (partition) of the input space $S$**.
+
+To construct a learning algorithm that progressively increases the number 
+of codevectors $M$ as needed, 
+we define a probability space over an infinite number of local models, 
+and constraint their distribution using the maximum-entropy principle 
+at different levels.
+
+First we need to adopt a probabilistic approach, and a discrete random variable
+$$Q:S \rightarrow \mu$$ 
+with countably infinite domain $\mu$.
+
+Then we constraint its distribution by formulating the multi-objective optimization:
+
+$$\min_\mu F(\mu) := (1-T) D(\mu) - T H(\mu)$$
+where 
+$$D(\mu) := E[d(X,Q)] =\int p(x) \sum_i p(\mu_i|x) d_\phi(x,\mu_i) ~\textrm{d}x$$
+and
+$$H(\mu) := E[-\log P(X,Q)] =H(X) - \int p(x) \sum_i p(\mu_i|x) \log p(\mu_i|x) ~\textrm{d}x $$
+is the Shannon entropy.
+
+This is now a problem of finding the locations $\{\mu_i\}$ and the 
+corresponding probabilities
+$\{p(\mu_i|x)\}:=\{p(Q=\mu_i|X=x)\}$.
+
+> The **Lagrange multiplier $T\in[0,1]$** is called the **temperature parameter** 
+
+and controls the trade-off between $D$ and $H$.
+As $T$ is varied, we essentially transition from one solution of the multi-objective optimization 
+(a Pareto point when the objectives are convex) to another, and:
+
+> **Reducing the values of $T$ results in a bifurcation phenomenon that increases $M$ and describes an annealing process** [1,2].
+
+The above **sequence of optimization problems** is solved for decreasing values of T using a
+
+> Recursive **gradient-free stochastic approximation** algorithm.
+
+## Abstract
+
 Inherent in virtually every
 iterative machine learning algorithm is the problem 
 of hyper-parameter tuning, which includes three major design parameters: 
@@ -46,7 +100,6 @@ offers robustness with respect to the initial conditions,
 and provides a means 
 to progressively increase the complexity of the learning model
 through an intuitive bifurcation phenomenon.
-
 
 ODA is interpretable, requires minimal 
 hyper-parameter tuning, and 
