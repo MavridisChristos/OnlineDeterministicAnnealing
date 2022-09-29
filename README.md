@@ -66,7 +66,7 @@ and controls the trade-off between $D$ and $H$.
 As $T$ is varied, we essentially transition from one solution of the multi-objective optimization 
 (a Pareto point when the objectives are convex) to another, and:
 
-> **Reducing the values of $T$ results in a bifurcation phenomenon that increases $M$ and describes an annealing process** [1,2].
+> **Reducing the values of $T$ results in a bifurcation phenomenon that increases $M$ and describes an annealing process** [1, 2].
 
 The above **sequence of optimization problems** is solved for decreasing values of T using a
 
@@ -151,7 +151,6 @@ For regression (piece-wise constant function approximation) replace:
     # Stop when reached 'error_threshold_count' times
     error_threshold_count = [2]
     # Make sure keepscore > 2
-    keepscore = 3
 
 > ODA vs Soft-Clustering vs LVQ
 
