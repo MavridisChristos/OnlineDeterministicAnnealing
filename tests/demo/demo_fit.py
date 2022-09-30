@@ -16,7 +16,7 @@ import numpy as np
 
 import os
 import sys
-sys.path.append('../../oda/')
+sys.path.append('../../OnlineDeterministicAnnealing/')
 
 from oda import ODA 
 import demo_domain
