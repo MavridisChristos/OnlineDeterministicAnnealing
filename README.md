@@ -10,10 +10,10 @@
 >reinforcement learning [2], 
 >adaptive graph partitioning [3], and swarm leader detection.
 
-![Drag Racing](tutorials/img/2Dapproximation/app0.png)
-![Drag Racing](tutorials/img/2Dapproximation/app1.png)
-![Drag Racing](tutorials/img/2Dapproximation/app2.png)
-![Drag Racing](tutorials/img/2Dapproximation/original.png)
+![](tutorials/img/2Dapproximation/app0.png)
+![](tutorials/img/2Dapproximation/app1.png)
+![](tutorials/img/2Dapproximation/app2.png)
+![](tutorials/img/2Dapproximation/original.png)
 
 ## Contact 
 
@@ -197,9 +197,22 @@ The training data should look like this:
 
 > [Clustering](https://colab.research.google.com/github/MavridisChristos/OnlineDeterministicAnnealing/blob/main/tutorials/tutorial-clustering.ipynb)
 
+![](tutorials/img/clustering/app0.png)
+![](tutorials/img/clustering/app1.png)
+![](tutorials/img/clustering/app2.png)
+
 > [Classification](https://colab.research.google.com/github/MavridisChristos/OnlineDeterministicAnnealing/blob/main/tutorials/tutorial-classification.ipynb)
 
+![](tutorials/img/classification/app0.png)
+![](tutorials/img/classification/app1.png)
+![](tutorials/img/classification/app2.png)
+
 > [Regression](https://colab.research.google.com/github/MavridisChristos/OnlineDeterministicAnnealing/blob/main/tutorials/tutorial-regression.ipynb)
+
+![](tutorials/img/2Dapproximation/app0.png)
+![](tutorials/img/2Dapproximation/app1.png)
+![](tutorials/img/2Dapproximation/app2.png)
+![](tutorials/img/2Dapproximation/original.png)
 
 ## Citing
 If you use this work in an academic context, please cite the following:
