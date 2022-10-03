@@ -10,6 +10,11 @@
 >reinforcement learning [2], 
 >adaptive graph partitioning [3], and swarm leader detection.
 
+![Drag Racing](tutorials/img/2Dapproximation/app0.png)
+![Drag Racing](tutorials/img/2Dapproximation/app1.png)
+![Drag Racing](tutorials/img/2Dapproximation/app2.png)
+![Drag Racing](tutorials/img/2Dapproximation/original.png)
+
 ## Contact 
 
 Christos N. Mavridis, Ph.D. \
